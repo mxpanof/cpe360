@@ -24,16 +24,21 @@ public:
 				head = new Chunk(value);
 				cap++;
 				return;
+				//cout << "hi";
 			}
+			else {
 			Chunk *placer = head;
 			Chunk *adder = new Chunk(value);
+			//cout << "hi";
 			for(int i = 0; i<pos-1 && placer->next != nullptr; i++)
 			{
 				placer = placer->next;
+			//cout << "hi";
 			}
 			adder->next = placer->next;
 			placer->next = adder;
 			cap++;
+			}
 		}
 		else
 			cout << "Bad insert Posistion\n";
@@ -93,7 +98,7 @@ public:
 			cout << temp->x << "\n";
 			temp = temp->next;
 		}
-		cout << temp->x << "\n"  << cap << "\n";
+		cout << temp->x << "\n"  << "\n";
 		}
 	}
 	
@@ -120,16 +125,16 @@ int main (int argc, char const* argv[])
  		cin >> value;
  		cin >> choice;
  		cout << "\n";
- 			myQueue.enQueue(value, choice);
+ 			myLL.insert(value, choice);
  			break;
  		case 2:
- 			cout << "Please enter the chunks to remove\n";
+ 			cout << "Please enter chunks to remove\n";
  			cin >> choice;
- 			myQueue.deQueue(choice);
+ 			myLL.remove(choice);
  			cout << "\n";
  			break;
  		case 3:
- 			myQueue.display();
+ 			myLL.display();
  			cout << "\n";
  			break;
  		/*case 4:
@@ -143,4 +148,4 @@ int main (int argc, char const* argv[])
  }
 	return 0;
 }
-}
+
