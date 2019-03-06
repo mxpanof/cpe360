@@ -50,20 +50,63 @@ public:
 		TreeChunk *temp = root;
 		while (val != temp->x && temp !=nullptr)//->right !=nullptr && temp->left !=nullptr)
 		{
-			if(val > temp->x)
+			if(val > temp->x && temp->right != nullptr)
 			{
 				temp = temp->right;
-				cout << "-->\n";
 			}
-			else if (val < temp->x)
+			else if (val < temp->x && temp->left != nullptr)
 			{
 				temp = temp->left;
-				cout << "<--\n";
 			}
 			if (val == temp->x)
 			return temp;
 		}
+		if (temp !=nullptr)
 		return temp;
+		return root;
+	}
+	void preOrderTraversal (TreeChunk *start)
+	{
+		if(start == nullptr)
+			return;
+		else
+		{
+			cout << start->x << " \n";
+			preOrderTraversal (start->left);
+			preOrderTraversal (start->right);
+		}
+	}
+	void postOrderTraversal (TreeChunk *start)
+	{
+		if(start == nullptr)
+			return;
+		else
+		{
+			postOrderTraversal (start->left);
+			postOrderTraversal (start->right);
+			cout << start->x << " \n";
+		}
+	}
+	void inOrderTraversal (TreeChunk *start)
+	{
+		if(start == nullptr)
+			return;
+		else
+		{
+			inOrderTraversal (start->left);
+			cout << start->x << " \n";
+			inOrderTraversal (start->right);
+		}
+	}
+	void remove (int val, TreeChunk *start)
+	{
+		search(val);
+		if(start->left == nullptr && start->right == nullptr)
+			delete start;
+		if(start->left == nullptr || start->right == nullptr)
+		{
+			
+		}
 	}
 	
 };
